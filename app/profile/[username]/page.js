@@ -12,8 +12,8 @@ const page = () => {
 }
 
 export const generateMetadata = async ({ params }) => {
-  const u= await params.username
-  const username = decodeURIComponent(u);
+  const u= await params
+  const username = decodeURIComponent(u.username);
   return {
     title: `${username} - Fundspire`,
     description: `Profile of ${username} on Fundspire`,
