@@ -1,0 +1,127 @@
+"use client"
+import React from 'react'
+import Script from 'next/script'
+import { initiate, fetchpayments, fetchuser } from '@/actions/useractions'
+import { useState, useEffect } from 'react'
+import { useSession } from 'next-auth/react'
+import { useParams } from 'next/navigation'
+
+const Username = ({ }) => {
+  const params = useParams()
+
+  const [CurrentUser, setCurrentUser] = useState({})
+  const [Payments, setPayments] = useState([])
+
+
+  const getData = async () => {
+    let username = decodeURIComponent(params.username)
+    let u = await fetchuser(username);
+    setCurrentUser(u);
+    let p = await fetchpayments(username);
+    setPayments(p);
+  }
+
+  useEffect(() => {
+    getData();
+  }, [params.username]);
+
+  const [paymentform, setpaymentform] = useState({
+  name: '',
+  message: '',
+  amount: ''
+})
+
+  const pay = async (amount) => {
+    const finalAmount = parseInt(amount);
+    if (!finalAmount || isNaN(finalAmount)) {
+      alert("Please enter a valid amount");
+      return;
+    }
+
+    let a = await initiate(finalAmount, params.username, paymentform);
+    let orderId = a.id;
+
+    var options = {
+      key: process.env.NEXT_PUBLIC_KEY_ID,
+      currency: "INR",
+      name: "Fundspire",
+      description: "Test Transaction",
+      image: "/Fundspire.png",
+      order_id: orderId,
+      callback_url: `${process.env.NEXT_PUBLIC_URL}/api/razorpay`,
+      prefill: {
+        name: paymentform.name || "",
+      },
+      notes: {
+        address: "Razorpay Corporate Office"
+      },
+      theme: {
+        color: "#3399cc"
+      }
+    };
+
+    const rzp1 = new Razorpay(options);
+    rzp1.open();
+   }
+
+  const handlechange = (e) => {
+    setpaymentform({ ...paymentform, [e.target.name]: e.target.value })
+  }
+  return (
+    <>
+      <Script src="https://checkout.razorpay.com/v1/checkout.js"></Script>
+
+      <div className="cover relative">
+        <img src={CurrentUser.coverpic||"/cover-image.png"} alt="Cover" className="w-full h-[47vh]" />
+        <div className="profile-pic absolute left-[46.6%] -bottom-12 size-24  ">
+          <img
+            data-tag="creator-public-page-avatar"
+            style={{ borderRadius: '10px' }}
+            className=" object-contain rounded-md"
+            src={CurrentUser.profilepic || "/avatar.gif"}
+            alt="Profile"
+          />
+        </div>
+      </div>
+      <div className="info text-sm flex flex-col justify-center items-center mt-12">
+        <div className="font-bold text-2xl">{decodeURIComponent(params.username)}</div>
+        <div className="text-gray-600">Creating Animated Art for the developers</div>
+        <div className="text-gray-300 text-lg">52 paid members · 432 Posts · &#8377;260.8/month</div>
+        <div className="payment flex gap-3 w-[80%]">
+          <div className="supporters rounded-md w-1/2 bg-slate-900 my-5">
+            <h2 className='text-2xl font-bold m-5'>Supporters</h2>
+
+            {/* show list of all the supporters as a leaderboard */}
+            <ul className='text-sm mx-9 my-3'>
+              {Payments.length === 0 && <p className='text-gray-500'>No payments made yet</p>}
+              {Payments.map((Payment, index) => {
+                return <li key={index} className='mb-1.5 flex items-center gap-1'><img src="/avatar.gif" className='h-[24] w-[24]' alt="" /><span>{Payment.name} donated <span className='font-bold'>&#8377;{Payment.amount/100}</span> with a message " {Payment.message} ❤"</span></li>
+              })}
+            </ul>
+          </div>
+          <div className="makepayment rounded-md w-1/2 bg-slate-900 my-5">
+            <h2 className='text-2xl font-bold m-5'>Make a Payment </h2>
+            <div className="mx-9 my-3">
+              <div className="flex gap-2 ">
+                <input onChange={handlechange} value={paymentform.name} name="name" type="text" className='w-full rounded-lg bg-slate-800 p-3' placeholder='Enter Name' />
+                <input onChange={handlechange} value={paymentform.message} name="message" type="text" className='w-full rounded-lg bg-slate-800 p-3' placeholder='Enter Message' />
+              </div>
+              <div className="flex  flex-col gap-3 mt-3 ">
+                <input onChange={handlechange} value={paymentform.amount} name="amount" type="text" className='w-full rounded-lg bg-slate-800 p-3' placeholder='Enter Amount' />
+                <button onClick={() => { pay(paymentform.amount * 100) }} className='text-white bg-gradient-to-br from-black to-blue-500 hover:bg-gradient-to-bl focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-3 text-center '>Pay</button>
+              </div>
+              {/* or choose from these amounts */}
+              <div className="flex gap-2 mt-3">
+                <button onClick={() => { pay(1000) }} className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2 text-center ">Pay &#8377;30</button>
+                <button onClick={() => { pay(2000) }} className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2 text-center ">Pay &#8377;50</button>
+                <button onClick={() => { pay(3000) }} className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2 text-center">Pay &#8377;100</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Username;
