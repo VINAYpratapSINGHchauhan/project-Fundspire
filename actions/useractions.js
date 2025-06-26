@@ -5,7 +5,13 @@ import connectDb from "@/db/connectDb"
 import User from "@/models/User"
 export const initiate = async (amount, to_user, paymentform) => {
     await connectDb()
-    var instance = new Razorpay({ key_id: process.env.NEXT_PUBLIC_KEY_ID, key_secret: process.env.KEY_SECRET })
+    // get id and secret from the database
+    let razorpay_details= await fetchRZPdetails(to_user);
+    if (!razorpay_details) {
+        throw new Error("User not found");
+    }
+
+    var instance = new Razorpay({ key_id:razorpay_details.id, key_secret: razorpay_details.secret });
     let options = {
         amount: Number.parseInt(amount),
         currency: "INR",
@@ -21,6 +27,12 @@ export const fetchuser = async (username) => {
     console.log(user)
     let u = user.toObject({ flattenObjectIds: true })
     return u
+}
+export const fetchRZPdetails = async (username) => {
+    let user =  await fetchuser(username)
+    if (!user) return null;
+    let razorpay_details = { id: user.razorpayid, secret: user.razorpaysecret }
+    return razorpay_details
 }
 export const fetchpayments = async (username) => {
     await connectDb();
@@ -53,4 +65,4 @@ export const updateProfile = async (data, oldusername) => {
     // update the user with the new data
     await User.updateOne({ email: data.email }, data)
     return true
-}
+};

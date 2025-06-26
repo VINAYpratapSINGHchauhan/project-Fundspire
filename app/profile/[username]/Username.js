@@ -64,7 +64,7 @@ const Username = ({ }) => {
     let orderId = a.id;
 
     var options = {
-      key: process.env.NEXT_PUBLIC_KEY_ID,
+      key: CurrentUser.razorpayid, // Enter the Key ID generated from the Dashboard
       currency: "INR",
       name: "Fundspire",
       description: "Test Transaction",
