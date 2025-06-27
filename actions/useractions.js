@@ -6,12 +6,12 @@ import User from "@/models/User"
 export const initiate = async (amount, to_user, paymentform) => {
     await connectDb()
     // get id and secret from the database
-    let razorpay_details= await fetchRZPdetails(to_user);
+    let razorpay_details = await fetchRZPdetails(to_user);
     if (!razorpay_details) {
         throw new Error("User not found");
     }
 
-    var instance = new Razorpay({ key_id:razorpay_details.id, key_secret: razorpay_details.secret });
+    var instance = new Razorpay({ key_id: razorpay_details.id, key_secret: razorpay_details.secret });
     let options = {
         amount: Number.parseInt(amount),
         currency: "INR",
@@ -29,7 +29,7 @@ export const fetchuser = async (username) => {
     return u
 }
 export const fetchRZPdetails = async (username) => {
-    let user =  await fetchuser(username)
+    let user = await fetchuser(username)
     if (!user) return null;
     let razorpay_details = { id: user.razorpayid, secret: user.razorpaysecret }
     return razorpay_details
@@ -61,8 +61,13 @@ export const updateProfile = async (data, oldusername) => {
         if (existingUser) {
             throw new Error("Username already exists");
         }
+        await User.updateOne({ email: data.email }, data)
+        // update the payments usernames also
+        await Payment.updateMany({ to_user: oldusername }, { to_user: data.username });
     }
+    else{
     // update the user with the new data
     await User.updateOne({ email: data.email }, data)
     return true
+    }
 };
