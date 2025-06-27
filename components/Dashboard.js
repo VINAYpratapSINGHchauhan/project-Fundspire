@@ -88,7 +88,8 @@ const Dashboard = () => {
                 theme="light"
             />
             <div className='container mx-auto py-5 px-6 '>
-                <h1 className='text-center my-5 text-3xl font-bold'>Welcome to your Dashboard</h1>
+                <h1 className='text-center my-5 text-3xl underline font-bold'>Welcome to your Dashboard</h1>
+                <h1 className='max-w-2xl mx-auto  my-5  font-bold'> #Complete your Profile</h1>
 
                 <form className="max-w-2xl mx-auto" onSubmit={handleSubmit} >
                     {/* Name */}
@@ -107,6 +108,18 @@ const Dashboard = () => {
                     <div className='my-2'>
                         <label htmlFor="username" className="block mb-2 text-sm font-medium ">Username</label>
                         <input value={form.username || ""} onChange={handleChange} type="text" name='username' id="username" className="block w-full p-2 text-black border border-gray-300 rounded-lg bg-gray-50 text-xs" />
+                    </div>
+
+                    {/* Profession */}
+                    <div className='my-2'>
+                        <label htmlFor="profession" className="block mb-2 text-sm font-medium ">Profession</label>
+                        <input value={form.profession || ""} onChange={handleChange} type="text" name='profession' id="profession" className="block w-full p-2 text-black border border-gray-300 rounded-lg bg-gray-50 text-xs" />
+                    </div>
+
+                    {/* Work */}
+                    <div className='my-2'>
+                        <label htmlFor="work" className="block mb-2 text-sm font-medium ">Desrcribe Your Work in One Line</label>
+                        <input value={form.work || ""} onChange={handleChange} type="text" name='work' id="work" className="block w-full p-2 text-black border border-gray-300 rounded-lg bg-gray-50 text-xs" />
                     </div>
 
                     {/* Cover Picture */}
