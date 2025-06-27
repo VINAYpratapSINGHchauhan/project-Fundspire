@@ -29,7 +29,7 @@ const Username = ({ }) => {
   }, [params.username]);
 
   useEffect(() => {
-    if (searchParams.get("paymentdone") === "true" ) {
+    if (searchParams.get("paymentdone") === "true") {
       toast('Thanks for the donation!', {
         position: "top-right",
         autoClose: 5000,
@@ -119,10 +119,11 @@ const Username = ({ }) => {
           />
         </div>
       </div>
-      <div className="info text-sm flex flex-col justify-center items-center mt-12">
+      <div className="info gap-1 text-sm flex flex-col justify-center items-center mt-16">
         <div className="font-bold text-2xl">{decodeURIComponent(params.username)}</div>
-        <div className="text-gray-600">Creating Animated Art for the developers</div>
-        <div className="text-gray-300 text-lg">52 paid members · 432 Posts · &#8377;260.8/month</div>
+        <div className="text-gray-600">{CurrentUser.profession} - {CurrentUser.work}</div>
+        <div className="text-gray-500 text-lg"><span className='font-bold'>{CurrentUser.name}</span> is raising funds · <span className='font-bold'> {Payments.length}</span> payments are  made</div>
+        <div className="text-gray-300 font-medium">Lets help him reach his goal!</div>
         <div className="payment flex gap-3 w-[80%]">
           <div className="supporters rounded-md w-1/2 bg-slate-900 my-5">
             <h2 className='text-2xl font-bold m-5'>Supporters</h2>
