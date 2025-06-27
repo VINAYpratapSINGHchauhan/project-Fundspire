@@ -14,6 +14,11 @@ const Username = ({ }) => {
   const { data: session } = useSession()
   const [CurrentUser, setCurrentUser] = useState({})
   const [Payments, setPayments] = useState([])
+  const [paymentform, setpaymentform] = useState({
+    name: '',
+    message: '',
+    amount: ''
+  })
   const router = useRouter()
 
   const getData = async () => {
@@ -47,11 +52,6 @@ const Username = ({ }) => {
 
 
 
-  const [paymentform, setpaymentform] = useState({
-    name: '',
-    message: '',
-    amount: ''
-  })
 
   const pay = async (amount) => {
     const finalAmount = parseInt(amount);
@@ -109,11 +109,11 @@ const Username = ({ }) => {
 
       <div className="cover relative">
         <img src={CurrentUser.coverpic || "/cover-image.png"} alt="Cover" className="w-full h-[47vh]" />
-        <div className="profile-pic absolute left-[46.6%] -bottom-12 size-24  ">
+        <div className="profile-pic absolute left-[46.6%] -bottom-12  size-24 ">
           <img
             data-tag="creator-public-page-avatar"
             style={{ borderRadius: '10px' }}
-            className=" object-contain rounded-md"
+            className=" object-contain rounded-md size-24"
             src={CurrentUser.profilepic || "/avatar.gif"}
             alt="Profile"
           />
@@ -145,7 +145,7 @@ const Username = ({ }) => {
               </div>
               <div className="flex  flex-col gap-3 mt-3 ">
                 <input onChange={handlechange} value={paymentform.amount} name="amount" type="text" className='w-full rounded-lg bg-slate-800 p-3' placeholder='Enter Amount' />
-                <button onClick={() => { pay(paymentform.amount * 100) }} className='text-white bg-gradient-to-br from-black to-purple-900 hover:bg-gradient-to-bl focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-3 text-center disabled:bg-slate-900 disabled:from-purple-100' disabled={paymentform.name?.length < 3 || paymentform.message?.length < 4} >Pay</button>
+                <button onClick={() => { pay(paymentform.amount * 100) }} className='text-white bg-gradient-to-br from-black to-purple-900 hover:bg-gradient-to-bl focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-3 text-center disabled:bg-slate-900 disabled:from-purple-100' disabled={paymentform.name?.length < 3 || paymentform.message?.length < 3||paymentform.amount?.length<1} >Pay</button>
               </div>
               {/* or choose from these amounts */}
               <div className="flex gap-2 mt-3">
