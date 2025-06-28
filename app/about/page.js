@@ -11,15 +11,11 @@ const About = () => {
         <p className="text-lg leading-7 text-gray-300 mb-6">
           Fundspire is a creator-centric platform designed to help you receive direct support from your audience. Whether you're a writer, developer, artist, or educator, Fundspire lets you set up a funding page where fans and followers can show appreciation through donations — we call it “buying a drink” 🍹.
         </p>
-        <img
-          src="/about-intro.jpg"
-          alt="Creators supported on Fundspire"
-          className="rounded-xl shadow-md w-full object-cover max-h-[400px]"
-        />
+        
       </section>
 
       {/* Timeline Section */}
-      <section className="mb-16">
+      <section className="mb-16 border border-gray-500/50 rounded-md p-9">
         <h2 className="text-2xl font-semibold mb-6">Our Journey</h2>
         <ul className="relative border-l-2 border-blue-500 pl-6 space-y-10">
           <li>
@@ -51,15 +47,11 @@ const About = () => {
             </p>
           </li>
         </ul>
-        <img
-          src="/timeline-img.jpg"
-          alt="Fundspire roadmap"
-          className="rounded-xl shadow-md mt-8 w-full object-cover max-h-[400px]"
-        />
+       
       </section>
 
       {/* FAQ Section */}
-      <section>
+      <section className="mb-16">
         <h2 className="text-2xl font-semibold mb-6">Frequently Asked Questions</h2>
         <div className="space-y-5">
           <div>
@@ -90,11 +82,7 @@ const About = () => {
             </p>
           </div>
         </div>
-        <img
-          src="/faq-support.jpg"
-          alt="FAQs"
-          className="rounded-xl shadow-md mt-10 w-full object-cover max-h-[400px]"
-        />
+        
       </section>
     </div>
   );
