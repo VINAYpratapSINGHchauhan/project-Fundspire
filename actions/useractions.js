@@ -24,7 +24,6 @@ export const initiate = async (amount, to_user, paymentform) => {
 export const fetchuser = async (username) => {
     await connectDb()
     let user = await User.findOne({ username: username })
-    console.log(user)
     let u = user.toObject({ flattenObjectIds: true })
     return u
 }
@@ -39,7 +38,6 @@ export const fetchpayments = async (username) => {
 
     let payments = await Payment.find({ to_user: username, done: true })
         .sort({ amount: -1 })
-        .limit(10)
         .lean();
 
     // Convert _id and date fields

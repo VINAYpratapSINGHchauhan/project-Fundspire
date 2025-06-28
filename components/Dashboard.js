@@ -89,7 +89,6 @@ const Dashboard = () => {
             />
             <div className='container mx-auto py-5 px-6 '>
                 <h1 className='text-center my-5 text-3xl underline font-bold'>Welcome to your Dashboard</h1>
-                <h1 className='max-w-2xl mx-auto  my-5  font-bold'> #Complete your Profile</h1>
 
                 <form className="max-w-2xl mx-auto" onSubmit={handleSubmit} >
                     {/* Name */}

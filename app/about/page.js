@@ -1,4 +1,3 @@
-"use client"
 import React from "react";
 
 const About = () => {
@@ -128,3 +127,7 @@ const About = () => {
 };
 
 export default About;
+export const metadata = {
+    title: "About - Fundspire",
+    description: "Learn about Fundspire, our mission, and how we empower creators to receive direct support from their fans.",
+}

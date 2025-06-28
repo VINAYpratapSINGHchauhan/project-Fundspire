@@ -25,22 +25,20 @@ const Navbar = () => {
   const handleDropdownItemClick = () => setshowdropdown(false)
 
   return (
-    <nav className='bg-black font-medium text-white flex px-5 py-7 justify-between items-center h-[7vh] border border-b-gray-500/50 border-black'>
+    <nav className='bg-black font-medium  text-white flex md:flex-row flex-col px-3 py-3  justify-between items-center h-content border border-b-gray-500/50 border-black'>
       <div>
-        <Link className="logo font-bold  flex items-center" href="/">
+        <Link className="logo font-bold mb-2 flex items-center" href="/">
           <img src="/Fundspire.png" width={40} height={30} alt="logo" />
           <span className='text-2xl'>Fundspire</span>
         </Link>
       </div>
-
       <div className="flex gap-7 justify-center">
-        <ul className='flex gap-4 items-center'>
+        <ul className='md:flex  md:visible gap-4 items-center hidden '>
           <li><Link href="/">Home</Link></li>
           <li><Link href="/about">About</Link></li>
           <li><Link href="/projects">Projects</Link></li>
           <li><Link href="/contact-us">Contact</Link></li>
         </ul>
-
         <div className="buttons relative" ref={dropdownRef}>
           {session ? (
             <>
@@ -67,7 +65,7 @@ const Navbar = () => {
                     </Link>
                   </li>
                   <li>
-                    <button 
+                    <button
                       onClick={() => {
                         setshowdropdown(false)
                         signOut({ callbackUrl: "/Login" })

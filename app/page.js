@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 export default function Home() {
   return (<>
-    <div className="flex justify-center text-white items-center flex-col h-[90vh] gap-4">
+    <div className="flex justify-center text-center text-white items-center flex-col h-[90vh] gap-4">
       <div className="font-bold text-5xl flex gap-2 items-center">Welcome to Fundspire🔥 </div>
       <p> A platform where creators get funded by fans and followers. start building your dream with community support</p>
       <div className="buttons ">
