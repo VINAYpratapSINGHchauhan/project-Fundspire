@@ -1,7 +1,35 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Contact = () => {
+  const testimonials = [
+    {
+      quote:
+        "I love how easy Fundspire makes it to receive support from my followers. It’s truly changed the way I connect with my community.",
+      author: "– A Fundspire Creator",
+    },
+    {
+      quote:
+        "Fundspire helped me turn my passion into income. Simple setup, clean design, and instant payouts — love it!",
+      author: "– A Happy Developer",
+    },
+    {
+      quote:
+        "As an artist, I’ve always wanted a platform that respects both creators and supporters. Fundspire nailed it.",
+      author: "– An Independent Artist",
+    },
+  ];
+
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % testimonials.length);
+    }, 5000); // switch every 5 seconds
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <div className="max-w-5xl mx-auto px-6 py-12 text-white">
       <h1 className="text-4xl font-bold text-center mb-6">Contact Us</h1>
@@ -88,12 +116,29 @@ const Contact = () => {
                 <a href="#" target="_blank" rel="noopener noreferrer">📘 Facebook</a>
               </div>
             </div>
-            
+
           </div>
         </div>
 
       </div>
-      
+
+      <div className=" border-t  border-gray-700 pt-10 h-40 my-[9vh]">
+        <div className="text-center max-w-2xl mx-auto">
+        <h1 className="text-2xl font-semibold mb-8">Here What Our Users Say ?</h1>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.6 }}
+          >
+            <p className="italic text-gray-400 text-lg mb-2">“{testimonials[index].quote}”</p>
+            <p className="text-blue-400 font-medium">{testimonials[index].author}</p>
+          </motion.div>
+        </AnimatePresence>
+        </div>
+      </div>
     </div>
   );
 };
