@@ -3,6 +3,7 @@ import Razorpay from "razorpay"
 import Payment from "@/models/Payment"
 import connectDb from "@/db/connectDb"
 import User from "@/models/User"
+import Query from "@/models/Query"
 export const initiate = async (amount, to_user, paymentform) => {
     await connectDb()
     // get id and secret from the database
@@ -69,4 +70,11 @@ export const updateProfile = async (data, oldusername) => {
     await User.updateOne({ email: data.email }, data)
     return true
     }
+};
+
+export const createQuery = async (data) => {
+    await connectDb()
+    // create a new query
+    await Query.create({ name: data.name, email: data.email, query: data.query })
+    return true
 };

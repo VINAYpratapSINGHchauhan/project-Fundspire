@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
+import {createQuery} from "@/actions/useractions";
 const Contact = () => {
   const testimonials = [
     {
@@ -22,6 +22,7 @@ const Contact = () => {
   ];
 
   const [index, setIndex] = useState(0);
+  const [QueryForm, setQueryForm] = useState({ name: "", email: "", query: "" })
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -30,6 +31,15 @@ const Contact = () => {
     return () => clearInterval(timer);
   }, []);
 
+  const handlechange = (e) => {
+    setQueryForm({ ...QueryForm, [e.target.id]: e.target.value })
+  }
+  const handlesubmit = async (e) => {
+    e.preventDefault();
+    await createQuery(QueryForm);
+    alert("form submitted");
+    setQueryForm({ name: "", email: "", query: "" });
+  }
   return (
     <div className="max-w-5xl mx-auto px-6 py-12 text-white">
       <h1 className="text-4xl font-bold text-center mb-6">Contact Us</h1>
@@ -39,7 +49,7 @@ const Contact = () => {
 
       <div className="bg-gray-900/40 border border-gray-700 rounded-xl shadow-lg p-8 md:p-10 grid md:grid-cols-2 gap-10">
         {/* Contact Form */}
-        <form className="space-y-6">
+        <form className="space-y-6 " onSubmit={handlesubmit}>
           <div>
             <label htmlFor="name" className="block text-sm font-medium mb-1">
               Name
@@ -47,6 +57,8 @@ const Contact = () => {
             <input
               type="text"
               id="name"
+              value={QueryForm.name}
+              onChange={handlechange}
               className="w-full px-4 py-2 rounded-md bg-gray-800 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Your Name"
               required
@@ -60,6 +72,8 @@ const Contact = () => {
             <input
               type="email"
               id="email"
+              value={QueryForm.email}
+              onChange={handlechange}
               className="w-full px-4 py-2 rounded-md bg-gray-800 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="you@example.com"
               required
@@ -73,6 +87,8 @@ const Contact = () => {
             <textarea
               id="query"
               rows="5"
+              value={QueryForm.query}
+              onChange={handlechange}
               className="w-full px-4 py-2 rounded-md bg-gray-800 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Write your query here..."
               required
@@ -124,19 +140,19 @@ const Contact = () => {
 
       <div className=" border-t  border-gray-700 pt-10 h-40 my-[9vh]">
         <div className="text-center max-w-2xl mx-auto">
-        <h1 className="text-2xl font-semibold mb-8">Here What Our Users Say ?</h1>
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.6 }}
-          >
-            <p className="italic text-gray-400 text-lg mb-2">“{testimonials[index].quote}”</p>
-            <p className="text-blue-400 font-medium">{testimonials[index].author}</p>
-          </motion.div>
-        </AnimatePresence>
+          <h1 className="text-2xl font-semibold mb-8">Here What Our Users Say ?</h1>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.6 }}
+            >
+              <p className="italic text-gray-400 text-lg mb-2">“{testimonials[index].quote}”</p>
+              <p className="text-blue-400 font-medium">{testimonials[index].author}</p>
+            </motion.div>
+          </AnimatePresence>
         </div>
       </div>
     </div>

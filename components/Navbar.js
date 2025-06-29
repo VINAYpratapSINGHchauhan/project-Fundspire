@@ -36,7 +36,6 @@ const Navbar = () => {
         <ul className='md:flex  md:visible gap-4 items-center hidden '>
           <li><Link href="/">Home</Link></li>
           <li><Link href="/about">About</Link></li>
-          <li><Link href="/projects">Projects</Link></li>
           <li><Link href="/contact-us">Contact</Link></li>
         </ul>
         <div className="buttons relative" ref={dropdownRef}>
