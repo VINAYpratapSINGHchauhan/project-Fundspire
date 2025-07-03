@@ -7,7 +7,7 @@ const About = () => {
 
             {/* Intro Section */}
             <section className="mb-14">
-                <p className="text-lg leading-7 text-gray-300 mb-6">
+                <p className="text-lg leading-7 text-center text-gray-300 mb-6">
                     Fundspire is a creator-centric platform designed to help you receive direct support from your audience. Whether you're a writer, developer, artist, or educator, Fundspire lets you set up a funding page where fans and followers can show appreciation through donations — we call it “buying a drink” 🍹.
                 </p>
             </section>
@@ -16,6 +16,11 @@ const About = () => {
             <section className="mb-16 border border-gray-500/50 rounded-md p-9">
                 <h2 className="text-2xl font-semibold mb-4 text-white">🚀 Benefits for Creators</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                    <img
+                        src="/coin.gif" // avatar gif
+                        alt="Creator avatar"
+                        className="rounded-xl shadow-md w-full object-contain h-[30vh]"
+                    />
                     <div>
                         <ul className="list-disc list-inside text-gray-300 space-y-2">
                             <li>Receive funds directly from your audience</li>
@@ -25,11 +30,6 @@ const About = () => {
                             <li>Simple Razorpay integration for fast payouts</li>
                         </ul>
                     </div>
-                    <img
-                        src="/coin.gif" // avatar gif
-                        alt="Creator avatar"
-                        className="rounded-xl shadow-md w-full object-contain h-[30vh]"
-                    />
                 </div>
             </section>
 
@@ -60,21 +60,21 @@ const About = () => {
                 <ul className="relative border-l-2 border-blue-500 pl-6 space-y-10">
                     <li>
                         <div className="absolute -left-3 w-6 h-6 bg-blue-500 rounded-full"></div>
-                        <h3 className="text-lg font-medium text-white">💡 Idea Born – Jan 2024</h3>
+                        <h3 className="text-lg font-medium text-white">💡 Idea Born – For Project</h3>
                         <p className="text-sm text-gray-400 mt-1">
                             We noticed a lack of desi creator support platforms — especially ones that are flexible, lightweight, and fun. That’s when the spark for Fundspire ignited.
                         </p>
                     </li>
                     <li>
                         <div className="absolute -left-3 w-6 h-6 bg-blue-500 rounded-full"></div>
-                        <h3 className="text-lg font-medium text-white">🚀 Beta Launch – Apr 2024</h3>
+                        <h3 className="text-lg font-medium text-white">🚀 Beta Launch </h3>
                         <p className="text-sm text-gray-400 mt-1">
                             Our MVP was rolled out to a small group of early creators. The feedback was overwhelming — both in enthusiasm and ideas!
                         </p>
                     </li>
                     <li>
                         <div className="absolute -left-3 w-6 h-6 bg-blue-500 rounded-full"></div>
-                        <h3 className="text-lg font-medium text-white">🌟 Public Launch – Jun 2024</h3>
+                        <h3 className="text-lg font-medium text-white">🌟 Public Launch – on Github</h3>
                         <p className="text-sm text-gray-400 mt-1">
                             We launched officially with Razorpay integration, customizable profiles, and the first version of our analytics dashboard.
                         </p>
