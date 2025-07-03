@@ -116,8 +116,8 @@ const Contact = () => {
           <div>
             <h2 className="text-xl font-semibold mb-2">🏢 Office</h2>
             <div className=" pl-6 text-sm mt-5">
-              <p className="text-gray-300">District Center, Janakpuri West</p>
-              <p className="text-gray-300">Delhi, India – 110058</p>
+              <p className="text-gray-300">vikas kunj, Uttam nagar east</p>
+              <p className="text-gray-300">Delhi, India – 110059</p>
             </div>
           </div>
 
