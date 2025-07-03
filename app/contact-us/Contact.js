@@ -37,7 +37,7 @@ const Contact = () => {
   const handlesubmit = async (e) => {
     e.preventDefault();
     await createQuery(QueryForm);
-    alert("form submitted");
+    alert("Query submitted , will get back to you soon!");
     setQueryForm({ name: "", email: "", query: "" });
   }
   return (
@@ -123,11 +123,11 @@ const Contact = () => {
 
           <div>
             <h2 className="text-xl font-semibold mb-2">🔗 Follow Us</h2>
-            <div className="flex">
-              <div className="flex flex-col gap-1 pl-6 text-sm mt-5 text-gray-300">
+            <div className="flex flex-col gap-2 mt-5 md:flex-row">
+              <div className="flex flex-col gap-2 pl-6 text-sm  text-gray-300">
                 <a href="#" target="_blank" rel="noopener noreferrer">🌐 Website</a>
                 <a href="#" target="_blank" rel="noopener noreferrer">📸 Instagram</a></div>
-              <div className="flex flex-col gap-1 pl-6 text-sm mt-5 text-gray-300">
+              <div className="flex flex-col gap-2 pl-6 text-sm  text-gray-300">
                 <a href="#" target="_blank" rel="noopener noreferrer">🐦 Twitter</a>
                 <a href="#" target="_blank" rel="noopener noreferrer">📘 Facebook</a>
               </div>
@@ -149,8 +149,8 @@ const Contact = () => {
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.6 }}
             >
-              <p className="italic text-gray-400 text-lg mb-2">“{testimonials[index].quote}”</p>
-              <p className="text-blue-400 font-medium">{testimonials[index].author}</p>
+              <p className="italic text-gray-400 text-xs md:text-lg mb-2">“{testimonials[index].quote}”</p>
+              <p className="text-blue-400 font-medium mb-2">{testimonials[index].author}</p>
             </motion.div>
           </AnimatePresence>
         </div>
