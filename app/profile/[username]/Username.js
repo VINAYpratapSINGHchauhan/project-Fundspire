@@ -108,8 +108,8 @@ const Username = ({ }) => {
       <Script src="https://checkout.razorpay.com/v1/checkout.js"></Script>
 
       <div className="cover relative">
-        <img src={CurrentUser.coverpic || "/cover-image.png"} alt="Cover" className="w-full h-[47vh]" />
-        <div className="profile-pic absolute left-[46.6%] -bottom-12  size-24 ">
+        <img src={"/cover-image.png"} alt="Cover" className="w-full h-[45vh] object-cover " />
+        <div className="profile-pic absolute md:left-[46.6%] left-[39%] -bottom-12  size-20 ">
           <img
             data-tag="creator-public-page-avatar"
             style={{ borderRadius: '10px' }}
@@ -122,21 +122,10 @@ const Username = ({ }) => {
       <div className="info gap-1 text-sm flex flex-col justify-center items-center mt-16">
         <div className="font-bold text-2xl">{decodeURIComponent(params.username)}</div>
         <div className="text-gray-600">{CurrentUser.profession} - {CurrentUser.work}</div>
-        <div className="text-gray-500 text-lg"><span className='font-bold'>{CurrentUser.name}</span> is raising funds · <span className='font-bold'> {Payments.length}</span> payments are  made</div>
+        <div className="text-gray-500 text-lg text-center px-2"><span className='font-bold'>{CurrentUser.name}</span> is raising funds · <span className='font-bold'> {Payments.length}</span> payments are  made</div>
         <div className="text-gray-300 font-medium">Lets help him reach his goal!</div>
-        <div className="payment flex gap-3 w-[80%]">
-          <div className="supporters rounded-md w-1/2 bg-slate-900 my-5">
-            <h2 className='text-2xl font-bold m-5'>Supporters</h2>
-
-            {/* show list of all the supporters as a leaderboard */}
-            <ul className='text-sm mx-9 my-3'>
-              {Payments.length === 0 && <p className='text-gray-500'>No payments made yet</p>}
-              {Payments.map((Payment, index) => {
-                return <li key={index} className='mb-1.5 aaaaaaaaaaaz flex items-center gap-1'><img src="/avatar.gif" className='h-[24] w-[24]' alt="" /><span>{Payment.name} donated <span className='font-bold'>&#8377;{Payment.amount / 100}</span> with a message " {Payment.message} ❤"</span></li>
-              })}
-            </ul>
-          </div>
-          <div className="makepayment rounded-md w-1/2 bg-slate-900 my-5">
+        <div className="payment flex flex-col md:flex-row gap-3 w-[80%]">
+          <div className="makepayment rounded-md md:w-1/2 w-full bg-slate-900 my-5">
             <h2 className='text-2xl font-bold m-5'>Make a Payment </h2>
             <div className="mx-9 my-3">
               <div className="flex gap-2 ">
@@ -145,7 +134,7 @@ const Username = ({ }) => {
               </div>
               <div className="flex  flex-col gap-3 mt-3 ">
                 <input onChange={handlechange} value={paymentform.amount} name="amount" type="text" className='w-full rounded-lg bg-slate-800 p-3' placeholder='Enter Amount' />
-                <button onClick={() => { pay(paymentform.amount * 100) }} className='text-white bg-gradient-to-br from-black to-purple-900 hover:bg-gradient-to-bl focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-3 text-center disabled:bg-slate-900 disabled:from-purple-100' disabled={paymentform.name?.length < 3 || paymentform.message?.length < 3||paymentform.amount?.length<1} >Pay</button>
+                <button onClick={() => { pay(paymentform.amount * 100) }} className='text-white bg-gradient-to-br from-black to-purple-900 hover:bg-gradient-to-bl focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-3 text-center disabled:bg-slate-900 disabled:from-purple-100' disabled={paymentform.name?.length < 3 || paymentform.message?.length < 3 || paymentform.amount?.length < 1} >Pay</button>
               </div>
               {/* or choose from these amounts */}
               <div className="flex gap-2 mt-3">
@@ -155,6 +144,18 @@ const Username = ({ }) => {
               </div>
             </div>
           </div>
+          <div className="supporters rounded-md md:w-1/2 w-full bg-slate-900 my-5">
+            <h2 className='text-2xl font-bold m-5'>Supporters</h2>
+
+            {/* show list of all the supporters as a leaderboard */}
+            <ul className='text-sm mx-9 my-3'>
+              {Payments.length === 0 && <p className='text-gray-500'>No payments made yet</p>}
+              {Payments.map((Payment, index) => {
+                return <li key={index} className='mb-1.5  flex items-start gap-2  '><img src="/avatar.gif" className='h-[24] w-[24]' alt="" /><span>{Payment.name} donated <span className='font-bold'>&#8377;{Payment.amount / 100}</span> with a message " {Payment.message} ❤"</span></li>
+              })}
+            </ul>
+          </div>
+
         </div>
       </div>
     </>
