@@ -69,8 +69,12 @@ NEXT_PUBLIC_HOST=http://localhost:3000
 npm run dev
 ```
 🙌 Contribution
+
+
 Pull requests are welcome! If you have ideas for improving this platform, feel free to fork and submit.
 
 
 👨‍💻 Author
+
+
 Made with ❤️ by Vinay Pratap Singh
