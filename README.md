@@ -1,6 +1,6 @@
 # 🌟 Fundspire
 
-**Fundspire** is a creator-first platform that helps **content creators** get funded directly by their fans and followers. Whether you're a developer, writer, artist, or educator — Fundspire lets you receive support and build your dream with community contributions. uses next/auth autenticatio via github provider
+**Fundspire** is a creator-first platform that helps **content creators** get funded directly by their fans and followers. Whether you're a developer, writer, artist, or educator — Fundspire lets you receive support and build your dream with community contributions. uses next-auth autentication via github provider
 
 
 ---
