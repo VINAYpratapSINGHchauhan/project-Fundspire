@@ -8,7 +8,7 @@ const About = () => {
             {/* Intro Section */}
             <section className="mb-14">
                 <p className="text-lg leading-7 text-center text-gray-300 mb-6">
-                    Fundspire is a creator-centric platform designed to help you receive direct support from your audience. Whether you're a writer, developer, artist, or educator, Fundspire lets you set up a funding page where fans and followers can show appreciation through donations — we call it “buying a drink” 🍹.
+                    Fundspire is a creator-centric platform designed to help you receive direct support from your audience. Whether you are a writer, developer, artist, or educator, Fundspire lets you set up a funding page where fans and followers can show appreciation through donations — we call it &quot;buying a drink&quot; 🍹.
                 </p>
             </section>
 
@@ -47,9 +47,9 @@ const About = () => {
                     <ul className="list-disc list-inside text-gray-300 space-y-2">
                         <li>Support your favorite creators directly</li>
                         <li>Send tips as small tokens of love</li>
-                        <li>Stay updated with your creator’s journey</li>
+                        <li>Stay updated with your creator&apos;s journey</li>
                         <li>Feel personally connected and involved</li>
-                        <li>Make a real impact on someone's creative work</li>
+                        <li>Make a real impact on someones creative work</li>
                     </ul>
                 </div>
             </section>
@@ -62,7 +62,7 @@ const About = () => {
                         <div className="absolute -left-3 w-6 h-6 bg-blue-500 rounded-full"></div>
                         <h3 className="text-lg font-medium text-white">💡 Idea Born – For Project</h3>
                         <p className="text-sm text-gray-400 mt-1">
-                            We noticed a lack of desi creator support platforms — especially ones that are flexible, lightweight, and fun. That’s when the spark for Fundspire ignited.
+                            We noticed a lack of desi creator support platforms — especially ones that are flexible, lightweight, and fun. That&apos;s when the spark for Fundspire ignited.
                         </p>
                     </li>
                     <li>
@@ -81,9 +81,9 @@ const About = () => {
                     </li>
                     <li>
                         <div className="absolute -left-3 w-6 h-6 bg-blue-500 rounded-full"></div>
-                        <h3 className="text-lg font-medium text-white">🔮 What’s Next</h3>
+                        <h3 className="text-lg font-medium text-white">🔮 What&apos;s Next</h3>
                         <p className="text-sm text-gray-400 mt-1">
-                            We’re working on supporter tiers, content unlocks, goal setting, and more ways to engage your fans!
+                            We&apos;re working on supporter tiers, content unlocks, goal setting, and more ways to engage your fans!
                         </p>
                     </li>
                 </ul>
@@ -96,7 +96,7 @@ const About = () => {
                     <div>
                         <h3 className="font-medium text-lg text-white">How do I receive payments?</h3>
                         <p className="text-sm text-gray-400 mt-1">
-                            Payments are processed securely via Razorpay. You’ll need to enter your Razorpay ID and secret in your dashboard to start receiving funds.
+                            Payments are processed securely via Razorpay. You&apos;ll need to enter your Razorpay ID and secret in your dashboard to start receiving funds.
                         </p>
                     </div>
 
@@ -117,7 +117,7 @@ const About = () => {
                     <div>
                         <h3 className="font-medium text-lg text-white">What kind of creators use Fundspire?</h3>
                         <p className="text-sm text-gray-400 mt-1">
-                            Everyone from developers and YouTubers to educators, poets, and musicians! If you create and share — you’re welcome here.
+                            Everyone from developers and YouTubers to educators, poets, and musicians! If you create and share — you&apos;re welcome here.
                         </p>
                     </div>
                 </div>
