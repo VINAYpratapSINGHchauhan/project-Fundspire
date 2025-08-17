@@ -151,7 +151,7 @@ const Username = ({ }) => {
             <ul className='text-sm mx-9 my-3'>
               {Payments.length === 0 && <p className='text-gray-500'>No payments made yet</p>}
               {Payments.map((Payment, index) => {
-                return <li key={index} className='mb-1.5  flex items-start gap-2  '><img src="/avatar.gif" className='h-[24] w-[24]' alt="" /><span>{Payment.name} donated <span className='font-bold'>&#8377;{Payment.amount / 100}</span> with a message " {Payment.message} ❤"</span></li>
+                return <li key={index} className='mb-1.5  flex items-start gap-2  '><img src="/avatar.gif" className='h-[24] w-[24]' alt="" /><span>{Payment.name} donated <span className='font-bold'>&#8377;{Payment.amount / 100}</span> with a message &quot; {Payment.message} ❤&quot;</span></li>
               })}
             </ul>
           </div>
