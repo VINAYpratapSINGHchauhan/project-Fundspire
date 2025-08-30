@@ -100,7 +100,7 @@ const Dashboard = () => {
                     {/* Email */}
                     <div className="my-2">
                         <label htmlFor="email" className="block mb-2 text-sm font-medium ">Email</label>
-                        <input value={form.email || ""} onChange={handleChange} type="email" readOnly name='email' id="email" className="block w-full p-2 text-black border border-gray-300 rounded-lg bg-gray-50 text-xs" />
+                        <input value={form.email || ""}  type="email" readOnly name='email' id="email" className="block w-full p-2 text-black border border-gray-300 rounded-lg bg-gray-50 text-xs" />
                     </div>
 
                     {/* Username */}

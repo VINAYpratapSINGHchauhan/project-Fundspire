@@ -122,7 +122,7 @@ const Username = ({ }) => {
       <div className="info gap-1 text-sm flex flex-col justify-center items-center mt-16">
         <div className="font-bold text-2xl">{decodeURIComponent(params.username)}</div>
         <div className="text-gray-600">{CurrentUser.profession} - {CurrentUser.work}</div>
-        <div className="text-gray-500 text-lg text-center px-2"><span className='font-bold'>{CurrentUser.name}</span> is raising funds · <span className='font-bold'> {Payments.length}</span> payments are  made</div>
+        <div className="text-gray-500 text-lg text-center px-2 w-[90%]"><span className='font-bold'>{CurrentUser.name}</span> is raising funds · <span className='font-bold'> {Payments.length}</span> payments are  made</div>
         <div className="text-gray-300 font-medium">Lets help him reach his goal!</div>
         <div className="payment flex flex-col md:flex-row gap-3 w-[80%]">
           <div className="makepayment rounded-md md:w-1/2 w-full bg-slate-900 my-5">
