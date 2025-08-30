@@ -122,18 +122,18 @@ const Username = ({ }) => {
       <div className="info gap-1 text-sm flex flex-col justify-center items-center mt-16">
         <div className="font-bold text-2xl">{decodeURIComponent(params.username)}</div>
         <div className="text-gray-600">{CurrentUser.profession} - {CurrentUser.work}</div>
-        <div className="text-gray-500 text-lg text-center px-2 w-[90%]"><span className='font-bold'>{CurrentUser.name}</span> is raising funds · <span className='font-bold'> {Payments.length}</span> payments are  made</div>
+        <div className="text-gray-500 text-center px-2 w-[90%]"><span className='font-bold'>{CurrentUser.name}</span> is raising funds · <span className='font-bold'> {Payments.length}</span> payments are  made</div>
         <div className="text-gray-300 font-medium">Lets help him reach his goal!</div>
         <div className="payment flex flex-col md:flex-row gap-3 w-[80%]">
           <div className="makepayment rounded-md md:w-1/2 w-full bg-slate-900 my-5">
             <h2 className='text-2xl font-bold m-5'>Make a Payment </h2>
             <div className="mx-9 my-3">
               <div className="flex gap-2 ">
-                <input onChange={handlechange} value={paymentform.name} name="name" type="text" className='w-full rounded-lg bg-slate-800 p-3' placeholder='Enter Name' />
-                <input onChange={handlechange} value={paymentform.message} name="message" type="text" className='w-full rounded-lg bg-slate-800 p-3' placeholder='Enter Message' />
+                <input required onChange={handlechange} value={paymentform.name} name="name" type="text" className='w-full rounded-lg bg-slate-800 p-3' placeholder='Enter Name' />
+                <input required  onChange={handlechange} value={paymentform.message} name="message" type="text" className='w-full rounded-lg bg-slate-800 p-3' placeholder='Enter Message' />
               </div>
               <div className="flex  flex-col gap-3 mt-3 ">
-                <input onChange={handlechange} value={paymentform.amount} name="amount" type="text" className='w-full rounded-lg bg-slate-800 p-3' placeholder='Enter Amount' />
+                <input  onChange={handlechange} value={paymentform.amount} name="amount" type="text" className='w-full rounded-lg bg-slate-800 p-3' placeholder='Enter Amount' />
                 <button onClick={() => { pay(paymentform.amount * 100) }} className='text-white bg-gradient-to-br from-black to-purple-900 hover:bg-gradient-to-bl focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-3 text-center disabled:bg-slate-900 disabled:from-purple-100' disabled={paymentform.name?.length < 3 || paymentform.message?.length < 3 || paymentform.amount?.length < 1} >Pay</button>
               </div>
               {/* or choose from these amounts */}
