@@ -33,58 +33,57 @@ const Username = ({ }) => {
     getData();
   }, [params.username]);
 
-  useEffect(() => {
-    if (searchParams.get("paymentdone") === "true") {
-      toast('Thanks for the donation!', {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-
-      });
-      router.push(`/profile/${params.username}`);
-    }
-  }, [session])
-
-
-
-
-  const pay = async (amount) => {
-    const finalAmount = parseInt(amount);
-    if (!finalAmount || isNaN(finalAmount)) {
-      alert("Please enter a valid amount");
-      return;
-    }
-
-    let a = await initiate(finalAmount, params.username, paymentform);
-    let orderId = a.id;
-
-    var options = {
-      key: CurrentUser.razorpayid, // Enter the Key ID generated from the Dashboard
-      currency: "INR",
-      name: "Fundspire",
-      description: "Test Transaction",
-      image: "/Fundspire.png",
-      order_id: orderId,
-      callback_url: `${process.env.NEXT_PUBLIC_URL}/api/razorpay`,
-      prefill: {
-        name: paymentform.name || "",
-      },
-      notes: {
-        address: "Razorpay Corporate Office"
-      },
-      theme: {
-        color: "#3399cc"
-      }
-    };
-
-    const rzp1 = new Razorpay(options);
-    rzp1.open();
+ useEffect(() => {
+  if (searchParams.get("paymentdone") === "true") {
+    toast('Thanks for the donation!', {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+    router.replace(`/profile/${params.username}`);
   }
+}, [searchParams, params.username, router]);
+
+
+
+
+
+const pay = async (amount) => {
+  const finalAmount = parseInt(amount);
+  if (!finalAmount || isNaN(finalAmount)) {
+    alert("Please enter a valid amount");
+    return;
+  }
+
+  let a = await initiate(finalAmount, params.username, paymentform);
+  let orderId = a.id;
+
+  var options = {
+    key: CurrentUser.razorpayid,
+    currency: "INR",
+    name: "Fundspire",
+    description: "Test Transaction",
+    image: "/Fundspire.png",
+    order_id: orderId,
+    callback_url: `${process.env.NEXT_PUBLIC_URL}/api/razorpay`,
+    prefill: { name: paymentform.name || "" },
+    notes: { address: "Razorpay Corporate Office" },
+    theme: { color: "#3399cc" },
+    handler: async function (response) {
+      toast.success("Thanks for the donation!");
+      await getData(); 
+    },
+  };
+
+  const rzp1 = new Razorpay(options);
+  rzp1.open();
+};
+
 
   const handlechange = (e) => {
     setpaymentform({ ...paymentform, [e.target.name]: e.target.value })
