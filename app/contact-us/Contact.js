@@ -1,7 +1,8 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {createQuery} from "@/actions/useractions";
+import { createQuery } from "@/actions/useractions";
+import { toast } from "react-toastify";
 const Contact = () => {
   const testimonials = [
     {
@@ -37,7 +38,7 @@ const Contact = () => {
   const handlesubmit = async (e) => {
     e.preventDefault();
     await createQuery(QueryForm);
-    alert("Query submitted , will get back to you soon!");
+    toast.success("Your Query has been Submitted Successfully!");
     setQueryForm({ name: "", email: "", query: "" });
   }
   return (
